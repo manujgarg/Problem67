@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner read=new Scanner(System.in);
+        int T=read.nextInt();
+        for(int i=0; i<T; i++){
+            int N=read.nextInt();
+            int[] lastRow=new int[N+1];
+            int[] currentRow=new int[N+1];
+            int ans=0;
+            for(int j=1; j<=N; j++){
+                for(int k=1; k<=j; k++){
+                    int t=read.nextInt();
+                    currentRow[k]=java.lang.Math.max(lastRow[k], lastRow[k-1])+t;
+                    if(currentRow[k]>ans){
+                        ans=currentRow[k];
+                    }
+                }
+                for(int k=1; k<=j; k++){
+                    lastRow[k]=currentRow[k];
+                }
+            }
+            System.out.println(ans);
+        }
+        
+    }
+}
